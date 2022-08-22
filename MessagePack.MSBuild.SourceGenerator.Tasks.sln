@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagePack.MSBuild.SourceGenerator.Tasks", "MessagePack.MSBuild.SourceGenerator.Tasks\MessagePack.MSBuild.SourceGenerator.Tasks.csproj", "{66A06911-5B4F-464E-A4C3-38099C9ACA80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5FEEE947-AB24-4DE9-8ED5-8C57CEAE838F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		global.json = global.json
+		nuget.config = nuget.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66A06911-5B4F-464E-A4C3-38099C9ACA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A06911-5B4F-464E-A4C3-38099C9ACA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A06911-5B4F-464E-A4C3-38099C9ACA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A06911-5B4F-464E-A4C3-38099C9ACA80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14A64159-8A22-473E-BEB9-156EAD4D9364}
+	EndGlobalSection
+EndGlobal
