@@ -1,4 +1,7 @@
 # MessagePack.MSBuild.SourceGenerator.Tasks
+[![GitHub](https://img.shields.io/github/license/hikarin522/MessagePack.MSBuild.SourceGenerator.Tasks)](LICENSE)
+[![Nuget](https://img.shields.io/nuget/v/MessagePack.MSBuild.SourceGenerator.Tasks)](https://www.nuget.org/packages/MessagePack.MSBuild.SourceGenerator.Tasks/)
+[![Nuget](https://img.shields.io/nuget/dt/MessagePack.MSBuild.SourceGenerator.Tasks)](https://www.nuget.org/packages/MessagePack.MSBuild.SourceGenerator.Tasks/)
 
 MessagePack.MSBuild.Tasks extensions for C# Source Generator.
 
