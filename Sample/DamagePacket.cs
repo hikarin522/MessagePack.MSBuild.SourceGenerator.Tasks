@@ -16,7 +16,7 @@ public partial struct NpcId { }
 [ValueVariant(ValueVariantGenerateOptions.MessagePackFormatter)]
 public partial struct CharacterId: IValueVariant<CharacterId, PlayerId, NpcId> { }
 
-[UnitOf(typeof(int), UnitGenerateOptions.MessagePackFormatter)]
+[UnitOf(typeof(int), UnitGenerateOptions.ArithmeticOperator | UnitGenerateOptions.ValueArithmeticOperator | UnitGenerateOptions.Comparable | UnitGenerateOptions.MinMaxMethod | UnitGenerateOptions.MessagePackFormatter)]
 public partial struct Hp { }
 
 [MessagePackObject]

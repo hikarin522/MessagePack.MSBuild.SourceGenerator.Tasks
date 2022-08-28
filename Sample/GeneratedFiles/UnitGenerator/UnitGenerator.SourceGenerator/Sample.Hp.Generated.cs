@@ -12,7 +12,7 @@ namespace Sample
  
     [MessagePackFormatter(typeof(HpMessagePackFormatter))]
     [System.ComponentModel.TypeConverter(typeof(HpTypeConverter))]
-    readonly partial struct Hp : IEquatable<Hp> 
+    readonly partial struct Hp : IEquatable<Hp> , IComparable<Hp>
     {
         readonly int value;
 
@@ -78,9 +78,138 @@ namespace Sample
 
 
 
+ 
+        // UnitGenerateOptions.MinMaxMethod
+
+        public static Hp Min(Hp x, Hp y)
+        {
+            return new Hp(Math.Min(x.value, y.value));
+        }
+
+        public static Hp Max(Hp x, Hp y)
+        {
+            return new Hp(Math.Max(x.value, y.value));
+        }
 
 
 
+ 
+        // UnitGenerateOptions.ArithmeticOperator
+
+        public static Hp operator +(in Hp x, in Hp y)
+        {
+            checked
+            {
+                return new Hp((int)(x.value + y.value));
+            }
+        }
+
+        public static Hp operator -(in Hp x, in Hp y)
+        {
+            checked
+            {
+                return new Hp((int)(x.value - y.value));
+            }
+        }
+
+        public static Hp operator *(in Hp x, in Hp y)
+        {
+            checked
+            {
+                return new Hp((int)(x.value * y.value));
+            }
+        }
+
+        public static Hp operator /(in Hp x, in Hp y)
+        {
+            checked
+            {
+                return new Hp((int)(x.value / y.value));
+            }
+        }
+
+
+ 
+        // UnitGenerateOptions.ValueArithmeticOperator
+
+        public static Hp operator ++(in Hp x)
+        {
+            checked
+            {
+                return new Hp((int)(x.value + 1));
+            }
+        }
+
+        public static Hp operator --(in Hp x)
+        {
+            checked
+            {
+                return new Hp((int)(x.value - 1));
+            }
+        }
+
+        public static Hp operator +(in Hp x, in int y)
+        {
+            checked
+            {
+                return new Hp((int)(x.value + y));
+            }
+        }
+
+        public static Hp operator -(in Hp x, in int y)
+        {
+            checked
+            {
+                return new Hp((int)(x.value - y));
+            }
+        }
+
+        public static Hp operator *(in Hp x, in int y)
+        {
+            checked
+            {
+                return new Hp((int)(x.value * y));
+            }
+        }
+
+        public static Hp operator /(in Hp x, in int y)
+        {
+            checked
+            {
+                return new Hp((int)(x.value / y));
+            }
+        }
+
+
+ 
+        // UnitGenerateOptions.Comparable
+
+        public int CompareTo(Hp other)
+        {
+            return value.CompareTo(other.value);
+        }
+
+         
+        
+        public static bool operator >(in Hp x, in Hp y)
+        {
+            return x.value > y.value;
+        }
+
+        public static bool operator <(in Hp x, in Hp y)
+        {
+            return x.value < y.value;
+        }
+
+        public static bool operator >=(in Hp x, in Hp y)
+        {
+            return x.value >= y.value;
+        }
+
+        public static bool operator <=(in Hp x, in Hp y)
+        {
+            return x.value <= y.value;
+        }
 
 
 

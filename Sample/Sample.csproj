@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="MessagePack" Version="2.3.112" />
-    <PackageReference Include="MessagePack.MSBuild.SourceGenerator.Tasks" Version="0.0.1">
+    <PackageReference Include="MessagePack.MSBuild.SourceGenerator.Tasks" Version="1.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -28,5 +28,8 @@
     <PackageReference Include="ValueVariant" Version="0.3.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="MessagePack.MSBuild.Tasks" ExcludeAssets="build" GeneratePathProperty="true" />
+  </ItemGroup>
 
 </Project>
