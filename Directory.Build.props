@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/hikarin522/MessagePack.MSBuild.SourceGenerator.Tasks</RepositoryUrl>
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>MsgPack;MessagePack;SourceGenerator</PackageTags>
+    <PackageTags>MessagePack;SourceGenerator</PackageTags>
     <Description>MessagePack.MSBuild.Tasks extensions for C# Source Generator.</Description>
   </PropertyGroup>
 

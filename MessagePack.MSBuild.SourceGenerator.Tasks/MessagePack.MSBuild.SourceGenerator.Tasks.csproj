@@ -13,7 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="build\MessagePack.MSBuild.SourceGenerator.Tasks.props" />
+    <PackageReference Include="HarmonicGenerator" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="HarmonicGenerator">
+      <PrivateAssets>compile; runtime; native; contentfiles; analyzers</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

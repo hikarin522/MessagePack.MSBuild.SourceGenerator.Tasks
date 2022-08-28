@@ -2,47 +2,21 @@
 
   <PropertyGroup>
     <PkgMessagePack_MSBuild_Tasks Condition="$(PkgMessagePack_MSBuild_Tasks) == ''">$(NuGetPackageRoot)messagepack.msbuild.tasks\@(PackageReference->WithMetadataValue('Identity', 'MessagePack.MSBuild.Tasks')->'%(Version)')</PkgMessagePack_MSBuild_Tasks>
-    <EmitCompilerGeneratedFiles>false</EmitCompilerGeneratedFiles>
-    <GeneratedFilesOutputPath Condition="'$(GeneratedFilesOutputPath)' == ''">$(CompilerGeneratedFilesOutputPath)</GeneratedFilesOutputPath>
-    <GeneratedFilesOutputPath Condition="'$(GeneratedFilesOutputPath)' == ''">$(IntermediateOutputPath)generated</GeneratedFilesOutputPath>
-    <MessagePackGeneratedResolverNamespace Condition="$(MessagePackGeneratedResolverNamespace) == ''">MessagePack</MessagePackGeneratedResolverNamespace>
-    <MessagePackGeneratedResolverName Condition="$(MessagePackGeneratedResolverName) == ''">GeneratedResolver</MessagePackGeneratedResolverName>
-    <MessagePackGeneratedUsesMapMode Condition="$(MessagePackGeneratedUsesMapMode) == ''">false</MessagePackGeneratedUsesMapMode>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="$(GeneratedFilesOutputPath)\**\*.cs" />
-    <None Include="$(GeneratedFilesOutputPath)\**\*.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Update="MessagePack.MSBuild.Tasks" ExcludeAssets="build" GeneratePathProperty="true" />
   </ItemGroup>
 
-  <Target Name="GenerateMessagePackReferenceUpdate" AfterTargets="Restore" Condition="!Exists('$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).$(MSBuildThisFile)')">
-    <PropertyGroup>
-      <MessagePackReferenceUpdate>
-        <Project>
-          <ItemGroup>
-            <PackageReference Update="MessagePack.MSBuild.Tasks" ExcludeAssets="build" GeneratePathProperty="true" />
-          </ItemGroup>
-        </Project>
-      </MessagePackReferenceUpdate>
-    </PropertyGroup>
-    <WriteLinesToFile File="$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).$(MSBuildThisFile)" Lines="$(MessagePackReferenceUpdate)" Overwrite="true" WriteOnlyWhenDifferent="true" />
-    <MSBuild Projects="$(MSBuildProjectFile)" Targets="Restore" />
-  </Target>
-
   <UsingTask TaskName="MessagePackGenerator" AssemblyFile="$(PkgMessagePack_MSBuild_Tasks)\build\MessagePack.MSBuild.Tasks.dll" />
 
-  <Target Name="GenerateMessagePackResolver" BeforeTargets="CoreCompile" DependsOnTargets="ResolveReferences" Condition="'$(EmitCompilerGeneratedFiles)' != 'true'">
-    <MSBuild Projects="$(MSBuildProjectFile)" Targets="Build" Properties="Configuration=$(Configuration);EmitCompilerGeneratedFiles=true;CompilerGeneratedFilesOutputPath=$(GeneratedFilesOutputPath)" />
+  <Target Name="GenerateMessagePackResolver" AfterTargets="AfterHarmonicGenerator">
     <ItemGroup>
-      <CompileForMessagePackGenerator Include="@(Compile);$(GeneratedFilesOutputPath)\**\*.cs" Exclude="$(GeneratedFilesOutputPath)\mpc_generated.cs" />
+      <CompileForMessagePackGenerator Include="@(Compile);@(HarmonicGeneratorGeneratedFiles)" Exclude="$(HarmonicGeneratorOutputPath)\mpc_generated.cs" />
     </ItemGroup>
     <MessagePackGenerator
       Compile="@(CompileForMessagePackGenerator)"
-      IntermediateOutputPath="$(GeneratedFilesOutputPath)"
+      IntermediateOutputPath="$(HarmonicGeneratorOutputPath)"
       ReferencePath="@(ReferencePath)"
       DefineConstants="$(DefineConstants)"
       Namespace="$(MessagePackGeneratedResolverNamespace)"
@@ -52,10 +26,6 @@
       <Output TaskParameter="GeneratedOutputPath" ItemName="Compile" />
       <Output TaskParameter="GeneratedOutputPath" ItemName="FileWrites" />
     </MessagePackGenerator>
-  </Target>
-
-  <Target Name="CleanGeneratedFiles" AfterTargets="CoreClean">
-    <RemoveDir Directories="$(GeneratedFilesOutputPath)" />
   </Target>
 
 </Project>
