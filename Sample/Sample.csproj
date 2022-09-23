@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="MessagePack" Version="2.3.112" />
-    <PackageReference Include="MessagePack.MSBuild.SourceGenerator.Tasks" Version="1.1.0">
+    <PackageReference Include="MessagePack.MSBuild.SourceGenerator.Tasks" Version="1.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
