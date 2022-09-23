@@ -28,4 +28,16 @@
     </MessagePackGenerator>
   </Target>
 
+  <Target Name="MessagePackBeforeResolveReferencesForVisualStudioReferenceResolver" BeforeTargets="ResolveReferences" Condition="Exists('$(HarmonicGeneratorOutputPath)\mpc_generated.cs')">
+    <ItemGroup>
+      <Compile Include="$(HarmonicGeneratorOutputPath)\mpc_generated.cs" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="MessagePackBeforeBeforeResolveReferencesForVisualStudioReferenceResolver" BeforeTargets="BeforeResolveReferences" Condition="Exists('$(HarmonicGeneratorOutputPath)\mpc_generated.cs')">
+    <ItemGroup>
+      <Compile Remove="$(HarmonicGeneratorOutputPath)\mpc_generated.cs" />
+    </ItemGroup>
+  </Target>
+
 </Project>
