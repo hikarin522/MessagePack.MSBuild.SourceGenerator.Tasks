@@ -1,9 +1,16 @@
 #!/bin/bash
 set -u
 
-dotnet format --verify-no-changes "$(dirname $0)/../"
+dotnet format "$(dirname $0)/../MessagePack.MSBuild.SourceGenerator.Tasks.sln" --verify-no-changes
 if [ $? -ne 0 ]; then
     echo "format error"
-    dotnet format "$(dirname $0)/../"
+    dotnet format "$(dirname $0)/../MessagePack.MSBuild.SourceGenerator.Tasks.sln"
+    exit 1
+fi
+
+dotnet format "$(dirname $0)/../Sample.sln" --verify-no-changes
+if [ $? -ne 0 ]; then
+    echo "format error"
+    dotnet format "$(dirname $0)/../Sample.sln"
     exit 1
 fi

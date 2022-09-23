@@ -31,25 +31,35 @@ jobs:
     - name: Restore dotnet tools
       run: dotnet tool restore
 
-    - name: Restore dependencies
-      run: dotnet restore
+    - name: Restore dependencies MessagePack.MSBuild.SourceGenerator.Tasks.sln
+      run: dotnet restore MessagePack.MSBuild.SourceGenerator.Tasks.sln
 
-    - name: Format Check
-      run: dotnet format --no-restore --verify-no-changes
+    - name: Format Check MessagePack.MSBuild.SourceGenerator.Tasks.sln
+      run: dotnet format MessagePack.MSBuild.SourceGenerator.Tasks.sln --no-restore --verify-no-changes
 
-    - name: Build
-      run: dotnet build --no-restore -c Release
-    - name : Test
-      run: dotnet test --no-build -c Release -l "console;verbosity=detailed"
+    - name: Build MessagePack.MSBuild.SourceGenerator.Tasks.sln
+      run: dotnet build MessagePack.MSBuild.SourceGenerator.Tasks.sln --no-restore -c Release
 
-    - name: Pack
-      run: dotnet pack --no-build -c Release -o artifacts/
+    - name: Pack MessagePack.MSBuild.SourceGenerator.Tasks.sln
+      run: dotnet pack MessagePack.MSBuild.SourceGenerator.Tasks.sln --no-build -c Release
+
+    - name: Restore dependencies Sample.sln
+      run: dotnet restore Sample.sln
+
+    - name: Format Check Sample.sln
+      run: dotnet format Sample.sln --no-restore --verify-no-changes
+
+    - name: Build Sample.sln
+      run: dotnet build Sample.sln --no-restore -c Release
+
+    - name : Test Sample.sln
+      run: dotnet test Sample.sln --no-build -c Release -l "console;verbosity=detailed"
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
         name: nupkg
-        path: artifacts/*.nupkg
+        path: nupkg/*.nupkg
 
     - name: NuGet add souce
       id: nuget_add_source
@@ -58,8 +68,8 @@ jobs:
 
     - name: Publish GitHub Packages
       if: steps.nuget_add_source.conclusion == 'success'
-      run: dotnet nuget push "artifacts/*.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "github" --skip-duplicate
+      run: dotnet nuget push "nupkg/*.nupkg" -k ${{ secrets.GITHUB_TOKEN }} -s "github" --skip-duplicate
 
     - name: Publish NuGet
       if: inputs.publish_nuget
-      run: dotnet nuget push "artifacts/*.nupkg" -k ${{ secrets.NUGET_OLG_API_KEY }} -s "nuget" --skip-duplicate
+      run: dotnet nuget push "nupkg/*.nupkg" -k ${{ secrets.NUGET_OLG_API_KEY }} -s "nuget" --skip-duplicate

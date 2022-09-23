@@ -5,6 +5,17 @@
     <IsPackable>true</IsPackable>
     <DevelopmentDependency>true</DevelopmentDependency>
     <IncludeBuildOutput>false</IncludeBuildOutput>
+
+    <Version>1.1.0</Version>
+    <Authors>hikarin522</Authors>
+    <Copyright>(c) 2022 hikarin522.</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/hikarin522/MessagePack.MSBuild.SourceGenerator.Tasks</RepositoryUrl>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>MessagePack;SourceGenerator</PackageTags>
+    <Description>MessagePack.MSBuild.Tasks extensions for C# Source Generator.</Description>
   </PropertyGroup>
 
   <ItemGroup>

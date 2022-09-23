@@ -14,4 +14,5 @@ if (!$Restore) {
 }
 
 dotnet tool restore
-dotnet clean
+dotnet clean MessagePack.MSBuild.SourceGenerator.Tasks.sln
+dotnet clean Sample.sln
