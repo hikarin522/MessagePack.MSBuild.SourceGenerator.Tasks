@@ -6,7 +6,7 @@
     <DevelopmentDependency>true</DevelopmentDependency>
     <IncludeBuildOutput>false</IncludeBuildOutput>
 
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Authors>hikarin522</Authors>
     <Copyright>(c) 2022 hikarin522.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HarmonicGenerator" Version="1.0.0">
+    <PackageReference Include="HarmonicGenerator" Version="1.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
