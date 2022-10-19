@@ -6,7 +6,7 @@
     <DevelopmentDependency>true</DevelopmentDependency>
     <IncludeBuildOutput>false</IncludeBuildOutput>
 
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Authors>hikarin522</Authors>
     <Copyright>(c) 2022 hikarin522.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
